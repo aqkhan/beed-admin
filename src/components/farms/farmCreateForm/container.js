@@ -1,20 +1,17 @@
-import React, { Component } from "react";
-import { AdminConsumer } from "../../../store";
+import React  from "react";
+import { AdminConsumer } from "../../../store/index";
 import Child from "./index";
-class Container extends Component{
-
-    render(){
-        return(
-            <AdminConsumer>
-                {
-                    ({dispatch, selectedMediaUrl, user}) => (
-                        <Child dispatch={dispatch}  user={user} history={this.props.history} selectedMediaUrl={selectedMediaUrl}/>
-                    )
-                }
-            </AdminConsumer>
-        )
-    }
-
+function Container (props){
+    let { newClinic } = props;
+    return(
+        <AdminConsumer>
+            {
+                ({dispatch, selectedMediaUrl, user}) => (
+                    <Child dispatch={dispatch} newClinic={newClinic} user={user} history={props.history} selectedMediaUrl={selectedMediaUrl}/>
+                )
+            }
+        </AdminConsumer>
+    )
 }
 
 export default Container;

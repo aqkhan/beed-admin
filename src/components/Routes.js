@@ -2,8 +2,7 @@ import React from "react";
 import {Switch, Route} from "react-router-dom";
 import LeftMainNav from "./leftmainnav";
 import Pages from "./farms/container";
-import ClinicCreateType from "./farms/farmCreateForm/container";
-import ClinicCreateNew from "./farms/farmCreateForm/newUser/container";
+import ClinicCreateNew from "./farms/farmCreateForm/container";
 import PagesEdit from "./farms/farmEditForm/pageEditContainer";
 import Dashboard from "./dashboard";
 import Users from "./clinicUsers/userContainer";
@@ -26,8 +25,7 @@ function Routes(props){
                             role === 'superAdmin' &&
                             <Switch>
                                 <Route path={"/farms"} component={Pages}/>
-                                <Route path={"/farm/create"} component={ClinicCreateType}/>
-                                <Route path={"/create/farm/new"} render={() => <ClinicCreateNew newClinic={false}/>}/>
+                                <Route path={"/create/farm/new"} component={ClinicCreateNew}/>
                                 <Route path={"/farm/edit/:id"} component={PagesEdit}/>
                                 <Route path={"/users"} component={Users}/>
                                 <Route exact path={"/user/add"} component={UsersCreateType}/>

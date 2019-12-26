@@ -3,35 +3,39 @@ import {Link} from "react-router-dom";
 import Loader from "../../commoncomponents/loader";
 import 'firebase/database';
 import {standardDate} from "../../functions";
-import {apiPath} from "../../../config";
-import axios from "axios";
+import {useMutation, useQuery} from '@apollo/react-hooks';
+import {DELETE_FARM, GET_ALL_FARMS} from "../../../utils/mutations";
 
-const
-    PagesList = () => {
+const PagesList = () => {
     const [clinicList, setClinicList] = useState(null);
-
+    const {loading, data, error} = useQuery(GET_ALL_FARMS);
+    const [deleteFarm] = useMutation(DELETE_FARM);
     useEffect(() => {
-        let main = [];
-        setClinicList(main);
-    }, []);
+        if(data && data.farms){
+            setClinicList(data.farms);
+        }
+        if(error){
+            setClinicList([]);
+        }
+    }, [data, error]);
 
 
     const deletePage = (id) => {
-        if (window.confirm('Are you sure you wish to delete this clinic?')) {
-            axios.delete(apiPath + "/deleteClinic?clinicId=" + id)
-                .then(res => {
-                    setClinicList(clinicList.filter(item => item.id !== id));
-                })
-                .catch(err => {
-
-                })
+        if (window.confirm('Are you sure you wish to delete this Farm?')) {
+            deleteFarm({
+                variables: {
+                    id: id
+                }
+            }).then(res => {
+                setClinicList(clinicList.filter(item => item.id !== id));
+            });
         }
     };
 
     return (
         <div className="container-fluid">
             <div className="navList">
-                <h5>Clinics List</h5>
+                <h5>Farm List</h5>
                 <div className="search-dropdown">
                     <div className="search-area mr-0">
                         <div>
