@@ -2,26 +2,17 @@ import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import Loader from "../../commoncomponents/loader";
 import 'firebase/database';
-import firebase from "../../../utils/firebase";
 import {standardDate} from "../../functions";
 import {apiPath} from "../../../config";
 import axios from "axios";
 
-const PagesList = () => {
+const
+    PagesList = () => {
     const [clinicList, setClinicList] = useState(null);
 
     useEffect(() => {
-        firebase.database().ref('/clinics').once('value').then(function (data) {
-            let main = [];
-            let responce = data.val();
-            for (let key in responce) {
-                if (responce.hasOwnProperty(key)) {
-                    responce[key].id = key;
-                    main.push(responce[key]);
-                }
-            }
-            setClinicList(main);
-        });
+        let main = [];
+        setClinicList(main);
     }, []);
 
 

@@ -57,7 +57,7 @@ class LeftMainNav extends Component {
                         </li>
                         <li>
                             <Link to="/farms" className={this.setCurrent("farm")}><span className="icon-pages" />
-                                <span className="icon-pages1 span2" />Clinics
+                                <span className="icon-pages1 span2" />Farms
                             </Link>
                         </li>
                         <li>
