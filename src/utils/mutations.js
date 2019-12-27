@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
-export const CREATE_FARM = gql`
-     mutation createFarm(
+export const createFarm = gql`
+     mutation CreateFarm(
          $name: String!,
          $location:String!,
          $email:String!
@@ -43,8 +43,8 @@ export const GET_SINGLE_FARM = (id) => gql`{
           }
        }`;
 
-export const GET_ALL_FARMS = gql`{
-        farms{
+export const listFarms = gql`{
+        listFarms{
               name
               id
               location

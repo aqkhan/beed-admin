@@ -5,10 +5,10 @@ import Pages from "./farms/container";
 import ClinicCreateNew from "./farms/farmCreateForm/container";
 import PagesEdit from "./farms/farmEditForm/pageEditContainer";
 import Dashboard from "./dashboard";
-import Users from "./clinicUsers/userContainer";
-import UsersCreateType from "./clinicUsers/userCreateForm";
-import UsersEdit from "./clinicUsers/userEditForm/userEditContainer";
-import NewUser from "./clinicUsers/userCreateForm/newUser/container";
+import Users from "./products/userContainer";
+// import UsersCreateType from "./products/productCreateForm";
+import UsersEdit from "./products/productEditForm/userEditContainer";
+import NewUser from "./products/productCreateForm/newUser/container";
 
 function Routes(props){
     let {pathname, dispatch, user, role} = props;
@@ -27,10 +27,10 @@ function Routes(props){
                                 <Route path={"/farms"} component={Pages}/>
                                 <Route path={"/create/farm/new"} component={ClinicCreateNew}/>
                                 <Route path={"/farm/edit/:id"} component={PagesEdit}/>
-                                <Route path={"/users"} component={Users}/>
-                                <Route exact path={"/user/add"} component={UsersCreateType}/>
-                                <Route exact path={"/user/add/new"} component={NewUser}/>
-                                <Route path={"/user/edit/:id"} component={UsersEdit}/>
+                                <Route path={"/products"} component={Users}/>
+                                <Route exact path={"/product/add/new/:farmId"} component={NewUser}/>
+                                <Route path={"/product/edit/:id/:farmId"} component={UsersEdit}/>
+                                {/*<Route exact path={"/user/add"} component={UsersCreateType}/>*/}
                             </Switch>
                         }
                     </div>

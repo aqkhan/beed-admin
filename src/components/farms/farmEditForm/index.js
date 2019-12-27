@@ -3,37 +3,46 @@ import {Link, withRouter} from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import 'firebase/database';
 import Loader from "../../commoncomponents/loader";
-import {UPDATE_FARM, GET_SINGLE_FARM} from "../../../utils/mutations";
+import {updateFarm} from "../../../graphql/mutations";
+import {getFarm} from "../../../graphql/queries";
 import {useMutation, useQuery} from '@apollo/react-hooks';
-// import UserList from "../../clinicUsers/userList";
+import UserList from "../../products/productList";
 
 const PageForm = (props) => {
+
     let Id = props.match.params.id;
     const [name, setName] = useState("");
     const [location, setLocation] = useState("");
     const [email, setEmail] = useState("");
     const [loaded, setLoaded] = useState(false);
     const [button, setButton] = useState("Update");
-    const [updatepagequery] = useMutation(UPDATE_FARM);
-    const {loading,  data} = useQuery(GET_SINGLE_FARM(Id));
+    const [updateFarmData] = useMutation(updateFarm);
+    const {loading,  data} = useQuery(getFarm, {
+        variables: {
+            id: Id
+        }
+    });
+
     useEffect(() => {
-        if(data.singleFarm){
-            setName(data.singleCategory.name);
-            setLocation(data.singleCategory.location);
-            setEmail(data.singleCategory.email);
+        if(data && data.getFarm){
+            setName(data.getFarm.name);
+            setLocation(data.getFarm.location);
+            setEmail(data.getFarm.email);
             setLoaded(true);
         }
-    }, []);
+    }, [data]);
 
     const onUpdate = (event) => {
         event.preventDefault();
         setButton("Updating...");
-        updatepagequery({
+        updateFarmData({
             variables: {
-                id: Id,
-                name,
-                location,
-                email
+                input:{
+                    id: Id,
+                    name,
+                    location,
+                    email
+                }
             }
         }).then(res => {
             setButton("Updated");
@@ -74,7 +83,7 @@ const PageForm = (props) => {
                         <div className="submit-btn">
                             <button type="submit" className="btn btn-default btn-blue" disabled={button === "Updating..."}>{button}</button>
                         </div>
-                        {/*<UserList clinicId={Id} role={role} practiceId={practiceId} dispatch={dispatch}/>*/}
+                        <UserList farmId={Id}/>
                     </form>
                 </div>
             </div>

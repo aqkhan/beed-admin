@@ -1,7 +1,6 @@
-/* eslint-disable */
-// this is an auto generated file. This will be overwritten
 
-export const getFarm = `query GetFarm($id: ID!) {
+import gql from 'graphql-tag';
+export const getFarm = gql`query GetFarm($id: ID!) {
   getFarm(id: $id) {
     id
     name
@@ -21,7 +20,7 @@ export const getFarm = `query GetFarm($id: ID!) {
   }
 }
 `;
-export const listFarms = `query ListFarms(
+export const listFarms = gql`query ListFarms(
   $filter: ModelFarmFilterInput
   $limit: Int
   $nextToken: String
@@ -40,7 +39,7 @@ export const listFarms = `query ListFarms(
   }
 }
 `;
-export const getProduct = `query GetProduct($id: ID!) {
+export const getProduct = gql`query GetProduct($id: ID!) {
   getProduct(id: $id) {
     id
     title
@@ -60,7 +59,7 @@ export const getProduct = `query GetProduct($id: ID!) {
   }
 }
 `;
-export const listProducts = `query ListProducts(
+export const listProducts = gql`query ListProducts(
   $filter: ModelProductFilterInput
   $limit: Int
   $nextToken: String
@@ -84,7 +83,7 @@ export const listProducts = `query ListProducts(
   }
 }
 `;
-export const getStore = `query GetStore($id: ID!) {
+export const getStore = gql`query GetStore($id: ID!) {
   getStore(id: $id) {
     id
     name
@@ -103,7 +102,7 @@ export const getStore = `query GetStore($id: ID!) {
   }
 }
 `;
-export const listStores = `query ListStores(
+export const listStores = gql`query ListStores(
   $filter: ModelStoreFilterInput
   $limit: Int
   $nextToken: String
@@ -122,7 +121,7 @@ export const listStores = `query ListStores(
   }
 }
 `;
-export const getUser = `query GetUser($id: ID!) {
+export const getUser = gql`query GetUser($id: ID!) {
   getUser(id: $id) {
     id
     user_name
@@ -141,7 +140,7 @@ export const getUser = `query GetUser($id: ID!) {
   }
 }
 `;
-export const listUsers = `query ListUsers(
+export const listUsers = gql`query ListUsers(
   $filter: ModelUserFilterInput
   $limit: Int
   $nextToken: String

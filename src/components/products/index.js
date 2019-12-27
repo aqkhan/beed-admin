@@ -1,5 +1,5 @@
 import React from "react";
-import UserList from "./userList";
+import UserList from "./productList";
 
 function Pages(props){
     let { clinic, role, dispatch } = props;

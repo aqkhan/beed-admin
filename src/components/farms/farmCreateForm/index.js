@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import {Link, withRouter} from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import { useMutation } from '@apollo/react-hooks';
-import { CREATE_FARM } from "../../../utils/mutations";
+import { createFarm } from "../../../graphql/mutations";
 
 
 const PageForm = (props) => {
     let { history } = props;
-    const [addEvent] = useMutation(CREATE_FARM);
+    const [addEvent] = useMutation(createFarm);
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
@@ -19,14 +19,21 @@ const PageForm = (props) => {
         setButton("Creating...");
         addEvent({
             variables: {
-                name,
-                address,
-                email
+                input: {
+                    name,
+                    location: address,
+                    email
+                }
             }
         }).then(({data}) => {
-            history.push("/blog/edit/" + data.createPost.id);
+            console.log('data', data);
+            history.push("/farm/edit/" + data.createFarm.id);
             window.location.reload()
-        }).catch(err => console.log(err))
+        }).catch(err => {
+            console.log(err);
+            setError("Something went wrong. Please try again later.");
+            setButton("Create");
+        })
 
     };
 
@@ -48,15 +55,15 @@ const PageForm = (props) => {
                     <form className="webinar-form fields_area" onSubmit={event => onSubmit(event)}>
                         <div className="inputs-inline">
                             <label>Name:</label>
-                            <input type="text" name="name" required onChange={event => setName(event.target.value)}/>
+                            <input type="text" name="name" value={name} required onChange={event => setName(event.target.value)}/>
                         </div>
                         <div className="inputs-inline">
-                            <label>Address:</label>
-                            <input type="text" name="title" required onChange={event => setAddress(event.target.value)}/>
+                            <label>Location:</label>
+                            <input type="text" name="title" value={address} required onChange={event => setAddress(event.target.value)}/>
                         </div>
                         <div className="inputs-inline">
                             <label>Email:</label>
-                            <input type="text" name="title" required onChange={event => setEmail(event.target.value)}/>
+                            <input type="text" name="title" value={email} required onChange={event => setEmail(event.target.value)}/>
                         </div>
                         <div className="error_mess_working">
                             {

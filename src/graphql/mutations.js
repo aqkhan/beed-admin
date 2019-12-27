@@ -1,7 +1,8 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
+import gql from 'graphql-tag';
 
-export const createFarm = `mutation CreateFarm(
+export const createFarm = gql`mutation CreateFarm(
   $input: CreateFarmInput!
   $condition: ModelFarmConditionInput
 ) {
@@ -24,7 +25,7 @@ export const createFarm = `mutation CreateFarm(
   }
 }
 `;
-export const updateFarm = `mutation UpdateFarm(
+export const updateFarm = gql`mutation UpdateFarm(
   $input: UpdateFarmInput!
   $condition: ModelFarmConditionInput
 ) {
@@ -47,7 +48,7 @@ export const updateFarm = `mutation UpdateFarm(
   }
 }
 `;
-export const deleteFarm = `mutation DeleteFarm(
+export const deleteFarm = gql`mutation DeleteFarm(
   $input: DeleteFarmInput!
   $condition: ModelFarmConditionInput
 ) {
@@ -70,7 +71,7 @@ export const deleteFarm = `mutation DeleteFarm(
   }
 }
 `;
-export const createProduct = `mutation CreateProduct(
+export const createProduct = gql`mutation CreateProduct(
   $input: CreateProductInput!
   $condition: ModelProductConditionInput
 ) {
@@ -93,7 +94,7 @@ export const createProduct = `mutation CreateProduct(
   }
 }
 `;
-export const updateProduct = `mutation UpdateProduct(
+export const updateProduct = gql`mutation UpdateProduct(
   $input: UpdateProductInput!
   $condition: ModelProductConditionInput
 ) {
@@ -116,7 +117,7 @@ export const updateProduct = `mutation UpdateProduct(
   }
 }
 `;
-export const deleteProduct = `mutation DeleteProduct(
+export const deleteProduct = gql`mutation DeleteProduct(
   $input: DeleteProductInput!
   $condition: ModelProductConditionInput
 ) {
@@ -139,7 +140,7 @@ export const deleteProduct = `mutation DeleteProduct(
   }
 }
 `;
-export const createStore = `mutation CreateStore(
+export const createStore = gql`mutation CreateStore(
   $input: CreateStoreInput!
   $condition: ModelStoreConditionInput
 ) {
@@ -161,7 +162,7 @@ export const createStore = `mutation CreateStore(
   }
 }
 `;
-export const updateStore = `mutation UpdateStore(
+export const updateStore = gql`mutation UpdateStore(
   $input: UpdateStoreInput!
   $condition: ModelStoreConditionInput
 ) {
@@ -183,7 +184,7 @@ export const updateStore = `mutation UpdateStore(
   }
 }
 `;
-export const deleteStore = `mutation DeleteStore(
+export const deleteStore = gql`mutation DeleteStore(
   $input: DeleteStoreInput!
   $condition: ModelStoreConditionInput
 ) {
@@ -205,7 +206,7 @@ export const deleteStore = `mutation DeleteStore(
   }
 }
 `;
-export const createUser = `mutation CreateUser(
+export const createUser = gql`mutation CreateUser(
   $input: CreateUserInput!
   $condition: ModelUserConditionInput
 ) {
@@ -227,7 +228,7 @@ export const createUser = `mutation CreateUser(
   }
 }
 `;
-export const updateUser = `mutation UpdateUser(
+export const updateUser = gql`mutation UpdateUser(
   $input: UpdateUserInput!
   $condition: ModelUserConditionInput
 ) {
@@ -249,7 +250,7 @@ export const updateUser = `mutation UpdateUser(
   }
 }
 `;
-export const deleteUser = `mutation DeleteUser(
+export const deleteUser = gql`mutation DeleteUser(
   $input: DeleteUserInput!
   $condition: ModelUserConditionInput
 ) {

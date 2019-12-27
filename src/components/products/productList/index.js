@@ -5,16 +5,29 @@ import 'firebase/database';
 import axios from "axios";
 import { apiPath } from "../../../config";
 import { standardDate } from "../../functions";
+import {useMutation, useQuery} from '@apollo/react-hooks';
+import {listProducts} from "../../../graphql/queries";
+
+// import {deleteProduct} from "../../../graphql/mutations";
+
 const PagesList = (props) => {
     const [userList, setUserList] = useState(null);
-    const { clinic, clinicId, role, practiceId, dispatch } = props;
+    const { farmId } = props;
+    const {loading, data, error} = useQuery(listProducts, {
+        variables: {
+            limit: 1000
+        }
+    });
+
     useEffect(() => {
-        axios.post(apiPath+"/getAllClinicUsers", {
-            clinicId: clinicId ? clinicId : clinic.id
-        }).then(res => {
-            setUserList(res.data.data);
-        })
-    }, []);
+        if(error){
+            console.log('error', error);
+            setUserList([]);
+        }
+        if(data && data.listProducts.items){
+            setUserList(data.listProducts.items);
+        }
+    }, [data, error]);
 
 
     const deletePage = (id) => {
@@ -26,19 +39,19 @@ const PagesList = (props) => {
     };
 
     const setClinic = (id) => {
-        dispatch({
-            type: "SET_CLINIC_ID",
-            payload: id,
-            practiceId: practiceId
-        })
+        // dispatch({
+        //     type: "SET_CLINIC_ID",
+        //     payload: id,
+        //     farmId: farmId
+        // })
     };
     return   (
     <div className="container-fluid">
         <div className="navList">
-            <h5>Users List</h5>
+            <h5>Product List</h5>
             <div className="search-dropdown">
-                <Link to={practiceId ? "/user/add" : "/user/add/new"}>
-                    <img className="fa fa-plus-circle" onClick={() => setClinic((clinicId ? clinicId : clinic.id))}  src={require("../../../assets/images/add.svg")} alt=""/>
+                <Link to={"/product/add/new/" + farmId}>
+                    <img className="fa fa-plus-circle" onClick={() => setClinic()}  src={require("../../../assets/images/add.svg")} alt=""/>
                 </Link>
             </div>
         </div>
@@ -46,10 +59,8 @@ const PagesList = (props) => {
             <table className="table">
                 <thead>
                 <tr className="tableHeading">
-                    <th className="">User Name</th>
-                    <th>Email</th>
-                    <th>Join Date</th>
-                    <th>Type</th>
+                    <th className="">Product Name</th>
+                    <th>Price</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -57,20 +68,14 @@ const PagesList = (props) => {
                 {
                     userList ? userList.length !== 0 && userList.map((item) => {
                             return (
-                                <tr className="tableData" key={item.uid}>
-                                    <td>{item.firstName + " " + item.lastName}</td>
-                                    <td>{item.email}</td>
-                                    <td>{standardDate(item.joinDate).standardDate}</td>
-                                    <td>{item.role}</td>
+                                <tr className="tableData" key={item.id}>
+                                    <td>{item.title}</td>
+                                    <td>{item.price}</td>
                                     <td className="action-icons">
-                                        <Link to={"/user/edit/"+item.uid} onClick={() => setClinic((clinicId ? clinicId : clinic.id))} ><img
+                                        <Link to={"/product/edit/"+item.id+"/"+farmId} onClick={() => setClinic()} ><img
                                         src={require("../../../assets/images/edit.svg")} alt=""/></Link>
-                                        {
-                                            (role !== "practiceAdmin" || item.role === "clinician") &&
-                                            <img
-                                                src={require("../../../assets/images/delete.svg")} alt=""
-                                                onClick={() => deletePage(item.uid)}/>
-                                        }
+                                        <img src={require("../../../assets/images/delete.svg")} alt=""
+                                                onClick={() => deletePage(item.id)}/>
                                     </td>
                                 </tr>
                             )
