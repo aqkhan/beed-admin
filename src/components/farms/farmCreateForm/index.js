@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import {Link, withRouter} from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import { useMutation } from '@apollo/react-hooks';
-import { CREATE_FARMS } from "../../../utils/mutations";
+import { CREATE_FARM } from "../../../utils/mutations";
 
 
 const PageForm = (props) => {
     let { history } = props;
-    const [addEvent] = useMutation(CREATE_FARMS);
+    const [addEvent] = useMutation(CREATE_FARM);
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");

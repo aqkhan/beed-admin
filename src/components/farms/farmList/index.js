@@ -51,7 +51,7 @@ const PagesList = () => {
                 <table className="table">
                     <thead>
                     <tr className="tableHeading">
-                        <th className="">Clinic Name</th>
+                        <th className="">Farm Name</th>
                         <th>Join Date</th>
                         <th>Actions</th>
                     </tr>

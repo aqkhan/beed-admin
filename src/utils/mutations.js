@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const CREATE_FARMS = gql`
+export const CREATE_FARM = gql`
      mutation createFarm(
          $name: String!,
          $location:String!,
@@ -58,5 +58,23 @@ export const DELETE_FARM = gql `
                     id
                }
          }`;
+
+export const CREATE_PRODUCT = gql`
+     mutation iiiiiuu(
+         $title: String!,
+         $description:String!,
+         $thumbnail:String!,
+         $price: Float!
+       ) {
+        createProduct(
+            title: $title,
+            description: $description,
+            thumbnail: $thumbnail,
+            price: $price
+         ) {
+         id
+        }
+      }
+`;
 
 

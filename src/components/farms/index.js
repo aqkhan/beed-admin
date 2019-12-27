@@ -8,7 +8,7 @@ function Pages(){
             <div className="rightSection">
                 <div className="Header page-header">
                     <div >
-                        <h3>Pages</h3>
+                        <h3>Farms</h3>
                         <Link to="create/farm/new">
                             <button className="btn btn-orange created">Register Clinic</button>
                         </Link>
