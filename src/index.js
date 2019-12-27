@@ -11,23 +11,10 @@ import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo';
 import { apiPath } from "./config";
 
-const defaultOptions = {
-    watchQuery: {
-        fetchPolicy: 'no-cache',
-        errorPolicy: 'ignore',
-    },
-    query: {
-        fetchPolicy: 'no-cache',
-        errorPolicy: 'all',
-    },
-};
-
 const token = cookie.load('token');
 const client = new ApolloClient({
     uri: apiPath,
     cache: false,
-    defaultOptions: defaultOptions,
-    fetchPolicy: 'network-only',
     request: operation => {
         operation.setContext({
             headers: {
