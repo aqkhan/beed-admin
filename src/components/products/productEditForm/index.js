@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {Link, withRouter} from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
-import axios from 'axios';
-import {apiPath} from "../../../config";
 import 'firebase/database';
 import Loader from "../../commoncomponents/loader";
 import {getProduct} from "../../../graphql/queries";
-import {updateFarm} from "../../../graphql/mutations";
+import {updateProduct} from "../../../graphql/mutations";
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import CKEditor from "react-ckeditor-component";
 
@@ -21,11 +19,12 @@ const PageForm = (props) => {
     const [thumbnail, setThumbNail] = useState("");
     const [loaded, setLoaded] = useState(false);
     const [button, setButton] = useState("Update");
-    const [updateFarmData] = useMutation(updateFarm);
+    const [updateFarmData] = useMutation(updateProduct);
     const {loading,  data} = useQuery(getProduct, {
         variables: {
             id: Id
-        }
+        },
+        fetchPolicy: 'network-only'
     });
     useEffect(() => {
         if(data && data.getProduct){
@@ -45,9 +44,9 @@ const PageForm = (props) => {
             variables: {
                 input:{
                     id: Id,
-                    name,
-                    slug,
+                    title: name,
                     description,
+                    slug,
                     price,
                     thumbnail
                 }

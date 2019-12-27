@@ -11,7 +11,8 @@ const PagesList = () => {
     const {loading, data, error} = useQuery(listFarms, {
         variables: {
             limit: 1000
-        }
+        },
+        fetchPolicy: 'network-only'
     });
     const [deleteSingleFarm] = useMutation(deleteFarm);
     useEffect(() => {

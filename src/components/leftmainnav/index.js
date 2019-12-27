@@ -1,83 +1,59 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { withRouter, Link } from "react-router-dom";
-import firebase from "../../utils/firebase";
-import 'firebase/auth';
 import cookie from "react-cookies";
-class LeftMainNav extends Component {
 
-    state = {
-        current: null,
-        show: false,
-        display: false,
-        hide: false,
-        view: false
-    };
+function LeftMainNav(props) {
+    let { path } = props;
+    const [current, setCurrentPath] = useState(null);
 
-    componentDidMount() {
-        let { path } = this.props;
-        this.setState({ current: path });
-    }
+    useEffect(() => {
+        setCurrentPath(path);
+    }, [path]);
 
-    componentWillReceiveProps(nextProps) {
-        let { path } = nextProps;
-        this.setState({ current: path });
-    }
-
-    logOut = () => {
+    const logOut = () => {
         cookie.remove('token');
-        let { dispatch } = this.props;
-        dispatch({
-            type: "LOG_OUT",
-            payload: null
-        })
-        firebase.auth().signOut();
-        localStorage.removeItem('role');
-        this.props.history.push('/login');
+        window.location.href = "/login";
     };
 
-    setCurrent(val) {
-        let { current } = this.state;
+    const setCurrent = (val) => {
         return current && (current.indexOf(val) !== -1) ? "active" : "";
     }
 
-    render() {
-        let { role } = this.props;
-        return (
-            <div className="leftSection">
-                <div>
-                    <div className="logo">
-                        <img src={require("../../assets/images/FBT_Logo.png")} alt="images" />
-                    </div>
-                    <ul className="list-container">
-                        <li>
-                            <Link to="/dashboard" className={this.setCurrent("dashboard")}>
-                                <span className="icon-dashboard" />
-                                <span className="icon-dashboard1 span2" />Dashboard
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/farms" className={this.setCurrent("farm")}><span className="icon-pages" />
-                                <span className="icon-pages1 span2" />Farms
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/users" className={this.setCurrent("user")}><span className="icon-pages" />
-                                <span className="icon-pages1 span2" />Users
-                            </Link>
-                        </li>
-                        <li onClick={() => this.logOut()}>
-                            <p className={this.setCurrent("logout")} onClick={() => this.setState({ show: true })}>
-                                <span className="icon-C_events_ico" />
-                                <span className="icon-C_events_ico1 span2" />Logout
-                            </p>
-                        </li>
-                    </ul>
+    return (
+        <div className="leftSection">
+            <div>
+                <div className="logo">
+                    <img src={require("../../assets/images/FBT_Logo.png")} alt="images" />
                 </div>
-                <div >
-                </div>
+                <ul className="list-container">
+                    <li>
+                        <Link to="/dashboard" className={setCurrent("dashboard")}>
+                            <span className="icon-dashboard" />
+                            <span className="icon-dashboard1 span2" />Dashboard
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/farms" className={setCurrent("farm")}><span className="icon-pages" />
+                            <span className="icon-pages1 span2" />Farms
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/users" className={setCurrent("user")}><span className="icon-pages" />
+                            <span className="icon-pages1 span2" />Users
+                        </Link>
+                    </li>
+                    <li onClick={() => logOut()}>
+                        <p className={setCurrent("logout")}>
+                            <span className="icon-C_events_ico" />
+                            <span className="icon-C_events_ico1 span2" />Logout
+                        </p>
+                    </li>
+                </ul>
             </div>
-        )
-    }
+            <div >
+            </div>
+        </div>
+    )
 
 }
 export default withRouter(LeftMainNav);

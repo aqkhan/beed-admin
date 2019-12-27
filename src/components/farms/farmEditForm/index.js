@@ -20,7 +20,8 @@ const PageForm = (props) => {
     const {loading,  data} = useQuery(getFarm, {
         variables: {
             id: Id
-        }
+        },
+        fetchPolicy: 'network-only'
     });
 
     useEffect(() => {

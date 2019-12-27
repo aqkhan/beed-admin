@@ -1,57 +1,51 @@
 import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import Loader from "../../commoncomponents/loader";
-import 'firebase/database';
-import axios from "axios";
-import { apiPath } from "../../../config";
-import { standardDate } from "../../functions";
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import {listProducts} from "../../../graphql/queries";
-
-// import {deleteProduct} from "../../../graphql/mutations";
+import {deleteProduct} from "../../../graphql/mutations";
 
 const PagesList = (props) => {
     const [userList, setUserList] = useState(null);
     const { farmId } = props;
-    const {loading, data, error} = useQuery(listProducts, {
+    const {data, error} = useQuery(listProducts, {
         variables: {
             limit: 1000
-        }
+        },
+        fetchPolicy: 'network-only'
     });
-
+    const [deleteSingleProduct] = useMutation(deleteProduct);
     useEffect(() => {
         if(error){
-            console.log('error', error);
             setUserList([]);
         }
         if(data && data.listProducts.items){
-            setUserList(data.listProducts.items);
+            setUserList(data.listProducts.items.filter(item => item.farm.id === farmId));
         }
-    }, [data, error]);
+    }, [data, error, farmId]);
 
 
     const deletePage = (id) => {
         if (window.confirm('Are you sure you wish to delete this clinic?')) {
-            axios.delete(apiPath+"/deleteClinician?uid="+id).then(res => {
-                setUserList(userList.filter(item => item.uid !== id));
+            deleteSingleProduct({
+                variables: {
+                    input: {
+                        id: id
+                    }
+                }
+            }).then(res => {
+                setUserList(userList.filter(item => item.id !== id));
             });
         }
     };
 
-    const setClinic = (id) => {
-        // dispatch({
-        //     type: "SET_CLINIC_ID",
-        //     payload: id,
-        //     farmId: farmId
-        // })
-    };
     return   (
     <div className="container-fluid">
         <div className="navList">
             <h5>Product List</h5>
             <div className="search-dropdown">
                 <Link to={"/product/add/new/" + farmId}>
-                    <img className="fa fa-plus-circle" onClick={() => setClinic()}  src={require("../../../assets/images/add.svg")} alt=""/>
+                    <img className="fa fa-plus-circle"  src={require("../../../assets/images/add.svg")} alt=""/>
                 </Link>
             </div>
         </div>
@@ -72,7 +66,7 @@ const PagesList = (props) => {
                                     <td>{item.title}</td>
                                     <td>{item.price}</td>
                                     <td className="action-icons">
-                                        <Link to={"/product/edit/"+item.id+"/"+farmId} onClick={() => setClinic()} ><img
+                                        <Link to={"/product/edit/"+item.id+"/"+farmId} ><img
                                         src={require("../../../assets/images/edit.svg")} alt=""/></Link>
                                         <img src={require("../../../assets/images/delete.svg")} alt=""
                                                 onClick={() => deletePage(item.id)}/>
