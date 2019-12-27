@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Link, withRouter} from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
-import 'firebase/database';
 import Loader from "../../commoncomponents/loader";
 import {getProduct} from "../../../graphql/queries";
 import {updateProduct} from "../../../graphql/mutations";

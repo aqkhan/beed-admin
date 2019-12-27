@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import Loader from "../../commoncomponents/loader";
-import 'firebase/database';
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import {listFarms} from "../../../graphql/queries";
 import {deleteFarm} from "../../../graphql/mutations";

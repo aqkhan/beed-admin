@@ -72,7 +72,7 @@ function Login(props) {
                                     <label>User Name</label>
                                     <input type="text" className="form-control"
                                            onChange={event => setEmail(event.target.value)}
-                                           placeholder="Enter Email" />
+                                           placeholder="Enter Username" />
                                 </div>
                                 <div className="form-group">
                                     <label>Password</label>
