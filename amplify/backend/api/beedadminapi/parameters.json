@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "beedadminapi",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authbeedadminca348b7d",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

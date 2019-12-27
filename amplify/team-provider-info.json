@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-beed-admin-dev-141512-authRole",
+            "UnauthRoleArn": "arn:aws:iam::021767385101:role/amplify-beed-admin-dev-141512-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::021767385101:role/amplify-beed-admin-dev-141512-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-beed-admin-dev-141512-deployment",
+            "UnauthRoleName": "amplify-beed-admin-dev-141512-unauthRole",
+            "StackName": "amplify-beed-admin-dev-141512",
+            "StackId": "arn:aws:cloudformation:us-east-1:021767385101:stack/amplify-beed-admin-dev-141512/772ab6a0-2889-11ea-8fbe-0a254e00bc9f",
+            "AmplifyAppId": "doxkdbjsu9ogj"
+        },
+        "categories": {
+            "auth": {
+                "beedadminca348b7d": {}
+            }
+        }
+    }
+}

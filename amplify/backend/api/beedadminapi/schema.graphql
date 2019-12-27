@@ -1,0 +1,31 @@
+type Farm @model {
+  id: ID!
+  name: String!
+  email: AWSEmail!
+  location: String
+  products: [Product] @connection(name: "FarmProducts")
+}
+type Product @model {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String!
+  price: String!
+  thumbnail: String!
+  farm: Farm! @connection(name: "FarmProducts")
+}
+type Store @model {
+  id: ID!
+  name: String!
+  email: AWSEmail!
+  location: String
+  users: [User] @connection(name: "StoreUsers")
+}
+type User @model {
+  id: ID!
+  user_name: String!
+  first_name: String!
+  last_name: String!
+  email: AWSEmail!
+  store: Store! @connection(name: "StoreUsers")
+}
