@@ -59,7 +59,7 @@ const PagesList = () => {
                     <thead>
                     <tr className="tableHeading">
                         <th className="">Farm Name</th>
-                        {/*<th>Join Date</th>*/}
+                        <th>Email</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -69,7 +69,7 @@ const PagesList = () => {
                                 return (
                                     <tr className="tableData" key={item.id}>
                                         <td>{item.name}</td>
-                                        {/*<td>{standardDate(item.joinDate).standardDate}</td>*/}
+                                        <td>{item.email}</td>
                                         <td className="action-icons"><Link to={"/farm/edit/" + item.id}><img
                                             src={require("../../../assets/images/edit.svg")} alt=""/></Link><img
                                             src={require("../../../assets/images/delete.svg")} alt=""

@@ -342,12 +342,12 @@ body {
 
 .icon-C_events_ico1:before {
     content: "\e956";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-dashboard1:before {
     content: "\e900";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-certifications_ico:before {
@@ -357,7 +357,7 @@ body {
 
 .icon-certifications_ico1:before {
     content: "\e957";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-courses_ico:before {
@@ -367,7 +367,7 @@ body {
 
 .icon-courses_ico1:before {
     content: "\e958";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-documents_ico-1:before {
@@ -377,7 +377,7 @@ body {
 
 .icon-documents_ico-11:before {
     content: "\e959";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-glossary_ico-1:before {
@@ -387,7 +387,7 @@ body {
 
 .icon-glossary_ico-11:before {
     content: "\e95a";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-media_ico:before {
@@ -397,7 +397,7 @@ body {
 
 .icon-media_ico1:before {
     content: "\e95b";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-press_release_ico-1:before {
@@ -407,7 +407,7 @@ body {
 
 .icon-press_release_ico-11:before {
     content: "\e95c";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-settings:before {
@@ -417,7 +417,7 @@ body {
 
 .icon-settings1:before {
     content: "\e95d";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-standards_ico-2:before {
@@ -427,7 +427,7 @@ body {
 
 .icon-standards_ico-21:before {
     content: "\e95e";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-teams_ico:before {
@@ -437,7 +437,7 @@ body {
 
 .icon-teams_ico1:before {
     content: "\e95f";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-webinar_ico:before {
@@ -447,7 +447,7 @@ body {
 
 .icon-webinar_ico1:before {
     content: "\e960";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-dashboard:before {
@@ -462,7 +462,7 @@ body {
 
 .icon-link-settings1:before {
     content: "\e901";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-marketing:before {
@@ -472,7 +472,7 @@ body {
 
 .icon-marketing1:before {
     content: "\e902";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-members:before {
@@ -482,7 +482,7 @@ body {
 
 .icon-members1:before {
     content: "\e903";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-pages:before {
@@ -492,7 +492,7 @@ body {
 
 .icon-pages1:before {
     content: "\e904";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-page-settings:before {
@@ -502,7 +502,7 @@ body {
 
 .icon-page-settings1:before {
     content: "\e905";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-save-as-template:before {
@@ -522,7 +522,7 @@ body {
 
 .icon-select-template1:before {
     content: "\e908";
-    color: #e47529;
+    color: #3E9244;
 }
 
 .icon-all-online-courses:before {
@@ -1093,7 +1093,7 @@ h4 {
 }
 
 .btn-orange {
-    background-color: #f17a28 !important;
+    background-color: #409949 !important;
 }
 
 .btn-darkgray {
@@ -1105,7 +1105,7 @@ h4 {
 }
 
 .orange {
-    color: #f17a28 !important;
+    color: #409949 !important;
 }
 
 /*light orange button*/
@@ -1268,22 +1268,22 @@ h4 {
 }
 
 .webinar {
-    background-color: #f17a28 !important;
+    background-color: #409949 !important;
     color: #ffffff !important;
 }
 
 .proweb {
-    background-color: #f17a28 !important;
+    background-color: #409949 !important;
     color: #ffffff !important;
 }
 
 .cweb {
-    background-color: #f17a28 !important;
+    background-color: #409949 !important;
     color: #ffffff !important;
 }
 
 .tweb {
-    background-color: #f17a28 !important;
+    background-color: #409949 !important;
     color: #ffffff !important;
 }
 
@@ -1373,11 +1373,11 @@ h4 {
 }
 
 .leftSection .list-container li a:hover {
-    color: #e47529;
+    color: #3E9244;
 }
 
 .leftSection .list-container li p:hover {
-    color: #e47529;
+    color: #3E9244;
 }
 
 .leftSection .list-container li a span, .leftSection .list-container li p span {
@@ -1399,7 +1399,7 @@ h4 {
 }
 
 .leftSection .list-container li a.active, .leftSection .list-container li p.active {
-    color: #e47529;
+    color: #3E9244;
 }
 
 .leftSection .list-container li a.active .span2 {
@@ -2308,7 +2308,7 @@ input:checked + .slider:before {
 }
 
 .team-list ul li:hover {
-    color: #e47529;
+    color: #3E9244;
 }
 
 .team-list ul li a {

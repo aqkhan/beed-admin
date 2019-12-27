@@ -9,7 +9,7 @@ export default () => (
         min-height: 572px;
     }
     .main-loader img{
-        width: 40px;
+        width: 80px;
     }
     `}</style>
 )

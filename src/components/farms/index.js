@@ -10,7 +10,7 @@ function Pages(){
                     <div >
                         <h3>Farms</h3>
                         <Link to="create/farm/new">
-                            <button className="btn btn-orange created">Register Clinic</button>
+                            <button className="btn btn-orange created">Register Farm</button>
                         </Link>
                     </div>
                 </div>

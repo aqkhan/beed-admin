@@ -23,7 +23,7 @@ function LeftMainNav(props) {
         <div className="leftSection">
             <div>
                 <div className="logo">
-                    <img src={require("../../assets/images/FBT_Logo.png")} alt="images" />
+                    <img src={require("../../assets/images/logo.png")} alt="images" />
                 </div>
                 <ul className="list-container">
                     <li>
