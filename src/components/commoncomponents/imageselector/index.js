@@ -1,30 +1,26 @@
 import React, {useState} from "react";
-
+import { mediaUpload } from "../../../config";
+import axios from "axios";
 function ImageSelector(props) {
 
-    let { thumbnail } = props;
+    let { thumbnail, setThumbnail } = props;
     const [ image, setImage ] = useState(thumbnail);
 
      const uploadImage = (event) => {
         const file = event.target.files[0];
         let reader = new FileReader();
         reader.readAsDataURL(file);
-        // this.setState({ file: file });
         reader.onloadend = function (e) {
-            setImage(reader.result);
-            console.log("reader.result", reader.result);
-            // const formData = new FormData();
-            // formData.append('image', reader.result);
-            // axios.post(apiPath+"/upload/image",formData).then(res =>{
-            //     this.setState({uploadingImage: false});
-            //     this.props.dispatch({
-            //         type: "SET_URL",
-            //         payLoad: res.data
-            //     })
-            //
-            // });
+            let payload = {
+                file : reader.result,
+                fileName: file.name,
+                directory: "UserThumbnails"
+            }
+            axios.post(mediaUpload,payload).then(res =>{
+                setImage(reader.result);
+                setThumbnail(res.data.Location);
+            });
         };
-        // .bind(this);
 
     };
 

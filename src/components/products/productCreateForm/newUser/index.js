@@ -92,10 +92,6 @@ const PageForm = (props) => {
                             <label>Price:</label>
                             <input type="text" value={price} onChange={event => setPrice(event.target.value)}/>
                         </div>
-                        <div className="inputs-inline">
-                            <label>Featured Image:</label>
-                            <input type="text" name="title" required value={thumbnail} onChange={event => setThumbNail(event.target.value)}/>
-                        </div>
                         <div>
                             <p className="red">{errorMessage}</p>
                         </div>
@@ -103,7 +99,7 @@ const PageForm = (props) => {
                             <button type="submit" className="btn btn-default btn-blue" disabled={button === "Adding..."}>{button}</button>
                         </div>
                     </form>
-                    <RightText/>
+                    <RightText thumbnail={thumbnail} setThumbnail={setThumbNail}/>
                 </div>
             </div>
         </div>

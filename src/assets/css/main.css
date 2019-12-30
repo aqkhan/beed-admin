@@ -1333,6 +1333,7 @@ h4 {
     background-color: #f9f9f9;
     flex: 1 1 80%;
     height: 100%;
+    position: relative;
 }
 
 .role-read > div p {

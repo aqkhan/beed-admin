@@ -101,16 +101,12 @@ const PageForm = (props) => {
                             <label>Price:</label>
                             <input type="text" value={price} onChange={event => setPrice(event.target.value)}/>
                         </div>
-                        <div className="inputs-inline">
-                            <label>Featured Image:</label>
-                            <input type="text" name="title" required value={thumbnail} onChange={event => setThumbNail(event.target.value)}/>
-                        </div>
                         <div className="submit-btn">
                             <button type="submit" className="btn btn-default btn-blue"
                                     disabled={button === "Updating..."}>{button}</button>
                         </div>
                     </form>
-                    <RightArea thumbnail={thumbnail}/>
+                    <RightArea thumbnail={thumbnail} setThumbnail={setThumbNail}/>
                 </div>
             </div>
         </div>
