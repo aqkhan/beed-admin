@@ -6,8 +6,8 @@ function ImageSelector(props) {
     let { thumbnail, setThumbnail } = props;
     const [ image, setImage ] = useState(thumbnail);
     const [loader, setLoader] = useState(true);
-     const uploadImage = (event) => {
-         setLoader(false);
+    const uploadImage = (event) => {
+        setLoader(false);
         const file = event.target.files[0];
         let reader = new FileReader();
         reader.readAsDataURL(file);

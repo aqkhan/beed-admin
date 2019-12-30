@@ -21,7 +21,7 @@ function Login(props) {
         event.preventDefault();
         setError("");
         setLoading(true);
-        axios.post(userPath+"/login", {
+        axios.post(userPath+"/auth/login", {
             user_name: email,
             password: password
         }).then(res => {
