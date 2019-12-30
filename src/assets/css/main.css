@@ -2788,3 +2788,11 @@ input:checked + .slider:before {
 .main_container .form_cont .fields_area .notice p{
     font-size: 20px;
 }
+
+.main-file-button{
+    position: absolute;
+    top: 15px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}

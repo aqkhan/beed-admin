@@ -16,7 +16,7 @@ const PageForm = (props) => {
     const [loaded, setLoaded] = useState(false);
     const [button, setButton] = useState("Update");
     const [updateFarmData] = useMutation(updateFarm);
-    const {loading,  data} = useQuery(getFarm, {
+    const {data} = useQuery(getFarm, {
         variables: {
             id: Id
         },

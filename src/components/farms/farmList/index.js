@@ -7,7 +7,7 @@ import {deleteFarm} from "../../../graphql/mutations";
 
 const PagesList = () => {
     const [clinicList, setClinicList] = useState(null);
-    const {loading, data, error} = useQuery(listFarms, {
+    const {data, error} = useQuery(listFarms, {
         variables: {
             limit: 1000
         },

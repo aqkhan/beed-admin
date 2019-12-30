@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Link, withRouter} from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import CKEditor from "react-ckeditor-component";
 import { useMutation } from '@apollo/react-hooks';
 import { createProduct } from "../../../../graphql/mutations";
+import RightText from "../../../commoncomponents/imageselector";
 
 const PageForm = (props) => {
     let { history } = props;
@@ -102,6 +103,7 @@ const PageForm = (props) => {
                             <button type="submit" className="btn btn-default btn-blue" disabled={button === "Adding..."}>{button}</button>
                         </div>
                     </form>
+                    <RightText/>
                 </div>
             </div>
         </div>
