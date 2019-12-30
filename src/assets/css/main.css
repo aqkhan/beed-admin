@@ -1333,6 +1333,7 @@ h4 {
     background-color: #f9f9f9;
     flex: 1 1 80%;
     height: 100%;
+    position: relative;
 }
 
 .role-read > div p {
@@ -2788,9 +2789,19 @@ input:checked + .slider:before {
 .main_container .form_cont .fields_area .notice p{
     font-size: 20px;
 }
-.update-user-modal .modal-footer{
-justify-content: center!important;
+
+.update-user-modal .modal-footer {
+    justify-content: center !important;
     padding: 0;
     min-height: 50px;
+
+}
+
+.main-file-button{
+    position: absolute;
+    top: 15px;
+    bottom: 0;
+    right: 0;
+    left: 0;
 
 }

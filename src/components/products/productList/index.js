@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
-import Loader from "../../commoncomponents/loader";
+import Loader from "../../commoncomponents/smallloader";
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import {listProducts} from "../../../graphql/queries";
 import {deleteProduct} from "../../../graphql/mutations";
@@ -74,7 +74,7 @@ const PagesList = (props) => {
                                 </tr>
                             )
                         }): <tr>
-                        <td colSpan="5">
+                        <td className="position-relative" colSpan="5">
                             <Loader/>
                         </td>
                     </tr>

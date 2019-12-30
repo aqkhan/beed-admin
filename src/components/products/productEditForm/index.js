@@ -6,11 +6,11 @@ import {getProduct} from "../../../graphql/queries";
 import {updateProduct} from "../../../graphql/mutations";
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import CKEditor from "react-ckeditor-component";
+import RightArea from "../../commoncomponents/imageselector";
 
 const PageForm = (props) => {
     let Id = props.match.params.id;
     let farmId = props.match.params.farmId;
-    let {match} = props;
     const [name, setName] = useState("");
     const [slug, setSlug] = useState("");
     const [description, setDescription] = useState("");
@@ -19,7 +19,7 @@ const PageForm = (props) => {
     const [loaded, setLoaded] = useState(false);
     const [button, setButton] = useState("Update");
     const [updateFarmData] = useMutation(updateProduct);
-    const {loading,  data} = useQuery(getProduct, {
+    const {data} = useQuery(getProduct, {
         variables: {
             id: Id
         },
@@ -101,15 +101,12 @@ const PageForm = (props) => {
                             <label>Price:</label>
                             <input type="text" value={price} onChange={event => setPrice(event.target.value)}/>
                         </div>
-                        <div className="inputs-inline">
-                            <label>Featured Image:</label>
-                            <input type="text" name="title" required value={thumbnail} onChange={event => setThumbNail(event.target.value)}/>
-                        </div>
                         <div className="submit-btn">
                             <button type="submit" className="btn btn-default btn-blue"
                                     disabled={button === "Updating..."}>{button}</button>
                         </div>
                     </form>
+                    <RightArea thumbnail={thumbnail} setThumbnail={setThumbNail}/>
                 </div>
             </div>
         </div>

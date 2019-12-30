@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Link, withRouter} from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import CKEditor from "react-ckeditor-component";
 import { useMutation } from '@apollo/react-hooks';
 import { createProduct } from "../../../../graphql/mutations";
+import RightText from "../../../commoncomponents/imageselector";
 
 const PageForm = (props) => {
     let { history } = props;
@@ -91,10 +92,6 @@ const PageForm = (props) => {
                             <label>Price:</label>
                             <input type="text" value={price} onChange={event => setPrice(event.target.value)}/>
                         </div>
-                        <div className="inputs-inline">
-                            <label>Featured Image:</label>
-                            <input type="text" name="title" required value={thumbnail} onChange={event => setThumbNail(event.target.value)}/>
-                        </div>
                         <div>
                             <p className="red">{errorMessage}</p>
                         </div>
@@ -102,6 +99,7 @@ const PageForm = (props) => {
                             <button type="submit" className="btn btn-default btn-blue" disabled={button === "Adding..."}>{button}</button>
                         </div>
                     </form>
+                    <RightText thumbnail={thumbnail} setThumbnail={setThumbNail}/>
                 </div>
             </div>
         </div>

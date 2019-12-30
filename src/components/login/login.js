@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import cookie from 'react-cookies';
 import { withRouter } from "react-router-dom";
 import { userPath } from "../../config";
