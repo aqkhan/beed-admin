@@ -2788,3 +2788,9 @@ input:checked + .slider:before {
 .main_container .form_cont .fields_area .notice p{
     font-size: 20px;
 }
+.update-user-modal .modal-footer{
+justify-content: center!important;
+    padding: 0;
+    min-height: 50px;
+
+}

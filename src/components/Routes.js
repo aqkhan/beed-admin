@@ -8,8 +8,11 @@ import Dashboard from "./dashboard";
 import Users from "./products/userContainer";
 import UsersEdit from "./products/productEditForm/userEditContainer";
 import NewUser from "./products/productCreateForm/newUser/container";
+import mainUersList from "../components/usersMain";
+import CeateUser from "../components/usersMain/userCreateForm";
+import UpdateUser from "../components/usersMain/userEditForm"
 
-function Routes(props){
+function Routes(props) {
     let {pathname} = props;
     return (
         <div>
@@ -27,6 +30,10 @@ function Routes(props){
                             <Route path={"/products"} component={Users}/>
                             <Route exact path={"/product/add/new/:farmId"} component={NewUser}/>
                             <Route path={"/product/edit/:id/:farmId"} component={UsersEdit}/>
+                            <Route path={"/user/edit/:id"} component={UsersEdit}/>
+                            <Route path={"/user/create"} component={CeateUser}/>
+                            <Route path={"/users"} component={mainUersList}/>
+
                         </Switch>
                     </div>
                 </div>
