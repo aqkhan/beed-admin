@@ -3,7 +3,7 @@ import cookie from 'react-cookies';
 import { withRouter } from "react-router-dom";
 import { userPath } from "../../config";
 import axios from "axios";
-
+import jwt from "jwt-decode";
 function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -25,9 +25,10 @@ function Login(props) {
             user_name: email,
             password: password
         }).then(res => {
-            if(res.data.idToken){
+            let data = jwt(res.data.idToken);
+            if(data['cognito:groups'][0] === "Admin" && res.data.idToken){
                 cookie.save(
-                    'token', res.data.idToken,{path: "/"}
+                    'token', res.data.idToken ,{path: "/"}
                 );
                 setLoading(false);
                 dispatch({

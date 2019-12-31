@@ -4,17 +4,18 @@ import Loader from "../../commoncomponents/smallloader";
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import {listProducts} from "../../../graphql/queries";
 import {deleteProduct} from "../../../graphql/mutations";
+import gql from "graphql-tag";
 
 const PagesList = (props) => {
     const [userList, setUserList] = useState(null);
     const { farmId } = props;
-    const {data, error} = useQuery(listProducts, {
+    const {data, error} = useQuery(gql(listProducts), {
         variables: {
             limit: 1000
         },
         fetchPolicy: 'network-only'
     });
-    const [deleteSingleProduct] = useMutation(deleteProduct);
+    const [deleteSingleProduct] = useMutation(gql(deleteProduct));
     useEffect(() => {
         if(error){
             setUserList([]);

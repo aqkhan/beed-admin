@@ -5,6 +5,7 @@ import CKEditor from "react-ckeditor-component";
 import { useMutation } from '@apollo/react-hooks';
 import { createProduct } from "../../../../graphql/mutations";
 import RightText from "../../../commoncomponents/imageselector";
+import gql from "graphql-tag";
 
 const PageForm = (props) => {
     let { history } = props;
@@ -16,7 +17,7 @@ const PageForm = (props) => {
     const [thumbnail, setThumbNail] = useState("");
     const [button, setButton] = useState("Create");
     const [errorMessage, setErrorMessage] = useState("");
-    const [addEvent] = useMutation(createProduct);
+    const [addEvent] = useMutation(gql(createProduct));
     const onSubmit = (event) => {
         event.preventDefault();
         setButton("Creating...");

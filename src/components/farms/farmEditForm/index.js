@@ -6,6 +6,7 @@ import {updateFarm} from "../../../graphql/mutations";
 import {getFarm} from "../../../graphql/queries";
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import UserList from "../../products/productList";
+import gql from "graphql-tag";
 
 const PageForm = (props) => {
 
@@ -15,8 +16,8 @@ const PageForm = (props) => {
     const [email, setEmail] = useState("");
     const [loaded, setLoaded] = useState(false);
     const [button, setButton] = useState("Update");
-    const [updateFarmData] = useMutation(updateFarm);
-    const {data} = useQuery(getFarm, {
+    const [updateFarmData] = useMutation(gql(updateFarm));
+    const {data} = useQuery(gql(getFarm), {
         variables: {
             id: Id
         },

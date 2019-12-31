@@ -7,6 +7,7 @@ import {updateProduct} from "../../../graphql/mutations";
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import CKEditor from "react-ckeditor-component";
 import RightArea from "../../commoncomponents/imageselector";
+import gql from "graphql-tag";
 
 const PageForm = (props) => {
     let Id = props.match.params.id;
@@ -18,8 +19,8 @@ const PageForm = (props) => {
     const [thumbnail, setThumbNail] = useState("");
     const [loaded, setLoaded] = useState(false);
     const [button, setButton] = useState("Update");
-    const [updateFarmData] = useMutation(updateProduct);
-    const {data} = useQuery(getProduct, {
+    const [updateFarmData] = useMutation(gql(updateProduct));
+    const {data} = useQuery(gql(getProduct), {
         variables: {
             id: Id
         },

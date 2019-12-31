@@ -4,16 +4,17 @@ import Loader from "../../commoncomponents/loader";
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import {listFarms} from "../../../graphql/queries";
 import {deleteFarm} from "../../../graphql/mutations";
+import gql from "graphql-tag";
 
 const PagesList = () => {
     const [clinicList, setClinicList] = useState(null);
-    const {data, error} = useQuery(listFarms, {
+    const {data, error} = useQuery(gql(listFarms), {
         variables: {
             limit: 1000
         },
         fetchPolicy: 'network-only'
     });
-    const [deleteSingleFarm] = useMutation(deleteFarm);
+    const [deleteSingleFarm] = useMutation(gql(deleteFarm));
     useEffect(() => {
         if(error){
             console.log('error', error);

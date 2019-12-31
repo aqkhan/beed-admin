@@ -3,11 +3,11 @@ import {Link, withRouter} from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import { useMutation } from '@apollo/react-hooks';
 import { createFarm } from "../../../graphql/mutations";
-
+import gql from "graphql-tag";
 
 const PageForm = (props) => {
     let { history } = props;
-    const [addEvent] = useMutation(createFarm);
+    const [addEvent] = useMutation(gql(createFarm));
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
