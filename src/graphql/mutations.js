@@ -140,7 +140,94 @@ export const deleteProduct = gql`mutation DeleteProduct(
   }
 }
 `;
-export const createStore = gql`mutation CreateStore(
+export const createOrder = `mutation CreateOrder(
+  $input: CreateOrderInput!
+  $condition: ModelOrderConditionInput
+) {
+  createOrder(input: $input, condition: $condition) {
+    id
+    notes
+    user_email
+    status
+    product {
+      id
+      title
+      slug
+      description
+      price
+      thumbnail
+      farm {
+        id
+        name
+        email
+        location
+      }
+    }
+    qty
+    delivery_date
+    order_total
+  }
+}
+`;
+export const updateOrder = `mutation UpdateOrder(
+  $input: UpdateOrderInput!
+  $condition: ModelOrderConditionInput
+) {
+  updateOrder(input: $input, condition: $condition) {
+    id
+    notes
+    user_email
+    status
+    product {
+      id
+      title
+      slug
+      description
+      price
+      thumbnail
+      farm {
+        id
+        name
+        email
+        location
+      }
+    }
+    qty
+    delivery_date
+    order_total
+  }
+}
+`;
+export const deleteOrder = `mutation DeleteOrder(
+  $input: DeleteOrderInput!
+  $condition: ModelOrderConditionInput
+) {
+  deleteOrder(input: $input, condition: $condition) {
+    id
+    notes
+    user_email
+    status
+    product {
+      id
+      title
+      slug
+      description
+      price
+      thumbnail
+      farm {
+        id
+        name
+        email
+        location
+      }
+    }
+    qty
+    delivery_date
+    order_total
+  }
+}
+`;
+export const createStore = `mutation CreateStore(
   $input: CreateStoreInput!
   $condition: ModelStoreConditionInput
 ) {

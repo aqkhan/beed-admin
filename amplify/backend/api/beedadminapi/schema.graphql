@@ -14,6 +14,16 @@ type Product @model {
   thumbnail: String!
   farm: Farm! @connection(name: "FarmProducts")
 }
+type Order @model {
+  id: ID!
+  notes: String!
+  user_email: String!
+  status: String!
+  product: Product!
+  qty: Int!
+  delivery_date: String!
+  order_total: Float!
+}
 type Store @model {
   id: ID!
   name: String!
