@@ -125,7 +125,7 @@ export const onCreateOrder = `subscription OnCreateOrder {
   onCreateOrder {
     id
     notes
-    user
+    user_email
     status
     product {
       id
@@ -141,6 +141,9 @@ export const onCreateOrder = `subscription OnCreateOrder {
         location
       }
     }
+    qty
+    delivery_date
+    order_total
   }
 }
 `;
@@ -148,7 +151,7 @@ export const onUpdateOrder = `subscription OnUpdateOrder {
   onUpdateOrder {
     id
     notes
-    user
+    user_email
     status
     product {
       id
@@ -164,6 +167,9 @@ export const onUpdateOrder = `subscription OnUpdateOrder {
         location
       }
     }
+    qty
+    delivery_date
+    order_total
   }
 }
 `;
@@ -171,7 +177,7 @@ export const onDeleteOrder = `subscription OnDeleteOrder {
   onDeleteOrder {
     id
     notes
-    user
+    user_email
     status
     product {
       id
@@ -187,6 +193,9 @@ export const onDeleteOrder = `subscription OnDeleteOrder {
         location
       }
     }
+    qty
+    delivery_date
+    order_total
   }
 }
 `;

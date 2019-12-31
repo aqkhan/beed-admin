@@ -88,7 +88,7 @@ export const getOrder = `query GetOrder($id: ID!) {
   getOrder(id: $id) {
     id
     notes
-    user
+    user_email
     status
     product {
       id
@@ -104,6 +104,9 @@ export const getOrder = `query GetOrder($id: ID!) {
         location
       }
     }
+    qty
+    delivery_date
+    order_total
   }
 }
 `;
@@ -116,7 +119,7 @@ export const listOrders = `query ListOrders(
     items {
       id
       notes
-      user
+      user_email
       status
       product {
         id
@@ -126,6 +129,9 @@ export const listOrders = `query ListOrders(
         price
         thumbnail
       }
+      qty
+      delivery_date
+      order_total
     }
     nextToken
   }

@@ -17,9 +17,12 @@ type Product @model {
 type Order @model {
   id: ID!
   notes: String!
-  user: String!
+  user_email: String!
   status: String!
-  product: Product
+  product: Product!
+  qty: Int!
+  delivery_date: String!
+  order_total: Float!
 }
 type Store @model {
   id: ID!

@@ -146,7 +146,7 @@ export const createOrder = `mutation CreateOrder(
   createOrder(input: $input, condition: $condition) {
     id
     notes
-    user
+    user_email
     status
     product {
       id
@@ -162,6 +162,9 @@ export const createOrder = `mutation CreateOrder(
         location
       }
     }
+    qty
+    delivery_date
+    order_total
   }
 }
 `;
@@ -172,7 +175,7 @@ export const updateOrder = `mutation UpdateOrder(
   updateOrder(input: $input, condition: $condition) {
     id
     notes
-    user
+    user_email
     status
     product {
       id
@@ -188,6 +191,9 @@ export const updateOrder = `mutation UpdateOrder(
         location
       }
     }
+    qty
+    delivery_date
+    order_total
   }
 }
 `;
@@ -198,7 +204,7 @@ export const deleteOrder = `mutation DeleteOrder(
   deleteOrder(input: $input, condition: $condition) {
     id
     notes
-    user
+    user_email
     status
     product {
       id
@@ -214,6 +220,9 @@ export const deleteOrder = `mutation DeleteOrder(
         location
       }
     }
+    qty
+    delivery_date
+    order_total
   }
 }
 `;
