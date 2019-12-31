@@ -3,7 +3,8 @@ import {Link, withRouter} from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import {userPath} from "../../../config";
-import cookie from "react-cookies"
+import cookie from "react-cookies";
+import RightText from "../../commoncomponents/imageselector"
 
 const PageForm = (props) => {
 
@@ -14,6 +15,7 @@ const PageForm = (props) => {
     const [phone, setPhone] = useState("");
     const [button, setButton] = useState("Create");
     const [error, setError] = useState(null);
+    const [thumbnail, setThumbNail] = useState("");
 
 
     const onSubmit = (event) => {
@@ -35,7 +37,7 @@ const PageForm = (props) => {
                 password: password,
                 phone: phone,
                 role: "Store",
-                thumbnail: ""
+                thumbnail: thumbnail
             }
         axios.post(userPath + "/auth/register", submitData, header).then(res => {
             setButton("Create");
@@ -46,7 +48,7 @@ const PageForm = (props) => {
 
     };
 
-
+    console.log(thumbnail,"thumbnal check")
     return (
         <div>
             <div className="rightSection">
@@ -95,6 +97,7 @@ const PageForm = (props) => {
                                     className="btn btn-default btn-blue">{button}</button>
                         </div>
                     </form>
+                    <RightText thumbnail={thumbnail} setThumbnail={setThumbNail}/>
                 </div>
             </div>
         </div>
