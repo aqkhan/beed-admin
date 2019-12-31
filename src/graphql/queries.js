@@ -1,6 +1,7 @@
+/* eslint-disable */
+// this is an auto generated file. This will be overwritten
 
-import gql from 'graphql-tag';
-export const getFarm = gql`query GetFarm($id: ID!) {
+export const getFarm = `query GetFarm($id: ID!) {
   getFarm(id: $id) {
     id
     name
@@ -20,7 +21,7 @@ export const getFarm = gql`query GetFarm($id: ID!) {
   }
 }
 `;
-export const listFarms = gql`query ListFarms(
+export const listFarms = `query ListFarms(
   $filter: ModelFarmFilterInput
   $limit: Int
   $nextToken: String
@@ -39,7 +40,7 @@ export const listFarms = gql`query ListFarms(
   }
 }
 `;
-export const getProduct = gql`query GetProduct($id: ID!) {
+export const getProduct = `query GetProduct($id: ID!) {
   getProduct(id: $id) {
     id
     title
@@ -56,10 +57,22 @@ export const getProduct = gql`query GetProduct($id: ID!) {
         nextToken
       }
     }
+    orders {
+      items {
+        id
+        notes
+        user_email
+        status
+        qty
+        delivery_date
+        order_total
+      }
+      nextToken
+    }
   }
 }
 `;
-export const listProducts = gql`query ListProducts(
+export const listProducts = `query ListProducts(
   $filter: ModelProductFilterInput
   $limit: Int
   $nextToken: String
@@ -77,6 +90,9 @@ export const listProducts = gql`query ListProducts(
         name
         email
         location
+      }
+      orders {
+        nextToken
       }
     }
     nextToken
@@ -101,6 +117,9 @@ export const getOrder = `query GetOrder($id: ID!) {
         name
         email
         location
+      }
+      orders {
+        nextToken
       }
     }
     qty
@@ -155,7 +174,7 @@ export const getStore = `query GetStore($id: ID!) {
   }
 }
 `;
-export const listStores = gql`query ListStores(
+export const listStores = `query ListStores(
   $filter: ModelStoreFilterInput
   $limit: Int
   $nextToken: String
@@ -174,7 +193,7 @@ export const listStores = gql`query ListStores(
   }
 }
 `;
-export const getUser = gql`query GetUser($id: ID!) {
+export const getUser = `query GetUser($id: ID!) {
   getUser(id: $id) {
     id
     user_name
@@ -193,7 +212,7 @@ export const getUser = gql`query GetUser($id: ID!) {
   }
 }
 `;
-export const listUsers = gql`query ListUsers(
+export const listUsers = `query ListUsers(
   $filter: ModelUserFilterInput
   $limit: Int
   $nextToken: String

@@ -13,13 +13,14 @@ type Product @model {
   price: String!
   thumbnail: String!
   farm: Farm! @connection(name: "FarmProducts")
+  orders: [Order] @connection(name: "OrderProducts")
 }
 type Order @model {
   id: ID!
   notes: String!
   user_email: String!
   status: String!
-  product: Product!
+  product: Product! @connection(name: "OrderProducts")
   qty: Int!
   delivery_date: String!
   order_total: Float!

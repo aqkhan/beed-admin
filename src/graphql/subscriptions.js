@@ -78,6 +78,18 @@ export const onCreateProduct = `subscription OnCreateProduct {
         nextToken
       }
     }
+    orders {
+      items {
+        id
+        notes
+        user_email
+        status
+        qty
+        delivery_date
+        order_total
+      }
+      nextToken
+    }
   }
 }
 `;
@@ -98,6 +110,18 @@ export const onUpdateProduct = `subscription OnUpdateProduct {
         nextToken
       }
     }
+    orders {
+      items {
+        id
+        notes
+        user_email
+        status
+        qty
+        delivery_date
+        order_total
+      }
+      nextToken
+    }
   }
 }
 `;
@@ -117,6 +141,18 @@ export const onDeleteProduct = `subscription OnDeleteProduct {
       products {
         nextToken
       }
+    }
+    orders {
+      items {
+        id
+        notes
+        user_email
+        status
+        qty
+        delivery_date
+        order_total
+      }
+      nextToken
     }
   }
 }
@@ -139,6 +175,9 @@ export const onCreateOrder = `subscription OnCreateOrder {
         name
         email
         location
+      }
+      orders {
+        nextToken
       }
     }
     qty
@@ -166,6 +205,9 @@ export const onUpdateOrder = `subscription OnUpdateOrder {
         email
         location
       }
+      orders {
+        nextToken
+      }
     }
     qty
     delivery_date
@@ -191,6 +233,9 @@ export const onDeleteOrder = `subscription OnDeleteOrder {
         name
         email
         location
+      }
+      orders {
+        nextToken
       }
     }
     qty

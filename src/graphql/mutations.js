@@ -1,8 +1,7 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
-import gql from 'graphql-tag';
 
-export const createFarm = gql`mutation CreateFarm(
+export const createFarm = `mutation CreateFarm(
   $input: CreateFarmInput!
   $condition: ModelFarmConditionInput
 ) {
@@ -25,7 +24,7 @@ export const createFarm = gql`mutation CreateFarm(
   }
 }
 `;
-export const updateFarm = gql`mutation UpdateFarm(
+export const updateFarm = `mutation UpdateFarm(
   $input: UpdateFarmInput!
   $condition: ModelFarmConditionInput
 ) {
@@ -48,7 +47,7 @@ export const updateFarm = gql`mutation UpdateFarm(
   }
 }
 `;
-export const deleteFarm = gql`mutation DeleteFarm(
+export const deleteFarm = `mutation DeleteFarm(
   $input: DeleteFarmInput!
   $condition: ModelFarmConditionInput
 ) {
@@ -71,7 +70,7 @@ export const deleteFarm = gql`mutation DeleteFarm(
   }
 }
 `;
-export const createProduct = gql`mutation CreateProduct(
+export const createProduct = `mutation CreateProduct(
   $input: CreateProductInput!
   $condition: ModelProductConditionInput
 ) {
@@ -91,10 +90,22 @@ export const createProduct = gql`mutation CreateProduct(
         nextToken
       }
     }
+    orders {
+      items {
+        id
+        notes
+        user_email
+        status
+        qty
+        delivery_date
+        order_total
+      }
+      nextToken
+    }
   }
 }
 `;
-export const updateProduct = gql`mutation UpdateProduct(
+export const updateProduct = `mutation UpdateProduct(
   $input: UpdateProductInput!
   $condition: ModelProductConditionInput
 ) {
@@ -114,10 +125,22 @@ export const updateProduct = gql`mutation UpdateProduct(
         nextToken
       }
     }
+    orders {
+      items {
+        id
+        notes
+        user_email
+        status
+        qty
+        delivery_date
+        order_total
+      }
+      nextToken
+    }
   }
 }
 `;
-export const deleteProduct = gql`mutation DeleteProduct(
+export const deleteProduct = `mutation DeleteProduct(
   $input: DeleteProductInput!
   $condition: ModelProductConditionInput
 ) {
@@ -136,6 +159,18 @@ export const deleteProduct = gql`mutation DeleteProduct(
       products {
         nextToken
       }
+    }
+    orders {
+      items {
+        id
+        notes
+        user_email
+        status
+        qty
+        delivery_date
+        order_total
+      }
+      nextToken
     }
   }
 }
@@ -161,6 +196,9 @@ export const createOrder = `mutation CreateOrder(
         name
         email
         location
+      }
+      orders {
+        nextToken
       }
     }
     qty
@@ -191,6 +229,9 @@ export const updateOrder = `mutation UpdateOrder(
         email
         location
       }
+      orders {
+        nextToken
+      }
     }
     qty
     delivery_date
@@ -219,6 +260,9 @@ export const deleteOrder = `mutation DeleteOrder(
         name
         email
         location
+      }
+      orders {
+        nextToken
       }
     }
     qty
@@ -249,7 +293,7 @@ export const createStore = `mutation CreateStore(
   }
 }
 `;
-export const updateStore = gql`mutation UpdateStore(
+export const updateStore = `mutation UpdateStore(
   $input: UpdateStoreInput!
   $condition: ModelStoreConditionInput
 ) {
@@ -271,7 +315,7 @@ export const updateStore = gql`mutation UpdateStore(
   }
 }
 `;
-export const deleteStore = gql`mutation DeleteStore(
+export const deleteStore = `mutation DeleteStore(
   $input: DeleteStoreInput!
   $condition: ModelStoreConditionInput
 ) {
@@ -293,7 +337,7 @@ export const deleteStore = gql`mutation DeleteStore(
   }
 }
 `;
-export const createUser = gql`mutation CreateUser(
+export const createUser = `mutation CreateUser(
   $input: CreateUserInput!
   $condition: ModelUserConditionInput
 ) {
@@ -315,7 +359,7 @@ export const createUser = gql`mutation CreateUser(
   }
 }
 `;
-export const updateUser = gql`mutation UpdateUser(
+export const updateUser = `mutation UpdateUser(
   $input: UpdateUserInput!
   $condition: ModelUserConditionInput
 ) {
@@ -337,7 +381,7 @@ export const updateUser = gql`mutation UpdateUser(
   }
 }
 `;
-export const deleteUser = gql`mutation DeleteUser(
+export const deleteUser = `mutation DeleteUser(
   $input: DeleteUserInput!
   $condition: ModelUserConditionInput
 ) {
