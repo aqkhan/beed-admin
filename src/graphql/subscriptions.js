@@ -121,6 +121,75 @@ export const onDeleteProduct = `subscription OnDeleteProduct {
   }
 }
 `;
+export const onCreateOrder = `subscription OnCreateOrder {
+  onCreateOrder {
+    id
+    notes
+    user
+    status
+    product {
+      id
+      title
+      slug
+      description
+      price
+      thumbnail
+      farm {
+        id
+        name
+        email
+        location
+      }
+    }
+  }
+}
+`;
+export const onUpdateOrder = `subscription OnUpdateOrder {
+  onUpdateOrder {
+    id
+    notes
+    user
+    status
+    product {
+      id
+      title
+      slug
+      description
+      price
+      thumbnail
+      farm {
+        id
+        name
+        email
+        location
+      }
+    }
+  }
+}
+`;
+export const onDeleteOrder = `subscription OnDeleteOrder {
+  onDeleteOrder {
+    id
+    notes
+    user
+    status
+    product {
+      id
+      title
+      slug
+      description
+      price
+      thumbnail
+      farm {
+        id
+        name
+        email
+        location
+      }
+    }
+  }
+}
+`;
 export const onCreateStore = `subscription OnCreateStore {
   onCreateStore {
     id

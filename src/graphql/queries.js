@@ -84,6 +84,53 @@ export const listProducts = `query ListProducts(
   }
 }
 `;
+export const getOrder = `query GetOrder($id: ID!) {
+  getOrder(id: $id) {
+    id
+    notes
+    user
+    status
+    product {
+      id
+      title
+      slug
+      description
+      price
+      thumbnail
+      farm {
+        id
+        name
+        email
+        location
+      }
+    }
+  }
+}
+`;
+export const listOrders = `query ListOrders(
+  $filter: ModelOrderFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listOrders(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      notes
+      user
+      status
+      product {
+        id
+        title
+        slug
+        description
+        price
+        thumbnail
+      }
+    }
+    nextToken
+  }
+}
+`;
 export const getStore = `query GetStore($id: ID!) {
   getStore(id: $id) {
     id

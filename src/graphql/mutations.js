@@ -139,6 +139,84 @@ export const deleteProduct = `mutation DeleteProduct(
   }
 }
 `;
+export const createOrder = `mutation CreateOrder(
+  $input: CreateOrderInput!
+  $condition: ModelOrderConditionInput
+) {
+  createOrder(input: $input, condition: $condition) {
+    id
+    notes
+    user
+    status
+    product {
+      id
+      title
+      slug
+      description
+      price
+      thumbnail
+      farm {
+        id
+        name
+        email
+        location
+      }
+    }
+  }
+}
+`;
+export const updateOrder = `mutation UpdateOrder(
+  $input: UpdateOrderInput!
+  $condition: ModelOrderConditionInput
+) {
+  updateOrder(input: $input, condition: $condition) {
+    id
+    notes
+    user
+    status
+    product {
+      id
+      title
+      slug
+      description
+      price
+      thumbnail
+      farm {
+        id
+        name
+        email
+        location
+      }
+    }
+  }
+}
+`;
+export const deleteOrder = `mutation DeleteOrder(
+  $input: DeleteOrderInput!
+  $condition: ModelOrderConditionInput
+) {
+  deleteOrder(input: $input, condition: $condition) {
+    id
+    notes
+    user
+    status
+    product {
+      id
+      title
+      slug
+      description
+      price
+      thumbnail
+      farm {
+        id
+        name
+        email
+        location
+      }
+    }
+  }
+}
+`;
 export const createStore = `mutation CreateStore(
   $input: CreateStoreInput!
   $condition: ModelStoreConditionInput
