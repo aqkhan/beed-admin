@@ -83,7 +83,60 @@ export const listProducts = gql`query ListProducts(
   }
 }
 `;
-export const getStore = gql`query GetStore($id: ID!) {
+export const getOrder = `query GetOrder($id: ID!) {
+  getOrder(id: $id) {
+    id
+    notes
+    user_email
+    status
+    product {
+      id
+      title
+      slug
+      description
+      price
+      thumbnail
+      farm {
+        id
+        name
+        email
+        location
+      }
+    }
+    qty
+    delivery_date
+    order_total
+  }
+}
+`;
+export const listOrders = `query ListOrders(
+  $filter: ModelOrderFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listOrders(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      notes
+      user_email
+      status
+      product {
+        id
+        title
+        slug
+        description
+        price
+        thumbnail
+      }
+      qty
+      delivery_date
+      order_total
+    }
+    nextToken
+  }
+}
+`;
+export const getStore = `query GetStore($id: ID!) {
   getStore(id: $id) {
     id
     name
