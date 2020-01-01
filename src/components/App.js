@@ -2,8 +2,8 @@ import React from "react";
 import Routes from "./Routes";
 import { withRouter } from "react-router-dom";
 
-function App(props) {
-    return <Routes pathname={props.location.pathname} />
+function App({location, loggedIn}) {
+    return <Routes pathname={location.pathname} loggedIn={loggedIn} />
 }
 
 export default withRouter(App);

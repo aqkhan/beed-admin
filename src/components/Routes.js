@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Switch, Route} from "react-router-dom";
 import LeftMainNav from "./leftmainnav";
 import Pages from "./farms/container";
@@ -10,10 +10,17 @@ import UsersEdit from "./products/productEditForm/userEditContainer";
 import NewUser from "./products/productCreateForm/newUser/container";
 import mainUersList from "../components/usersMain";
 import CeateUser from "../components/usersMain/userCreateForm";
-import UpdateUser from "../components/usersMain/userEditForm"
+import { withRouter } from "react-router-dom";
 
 function Routes(props) {
-    let {pathname} = props;
+    let {pathname, loggedIn} = props;
+
+    useEffect(() => {
+        if(!loggedIn){
+            props.history.push('/login');
+        }
+    }, [loggedIn]);
+
     return (
         <div>
             <div className="main-container">
@@ -33,7 +40,6 @@ function Routes(props) {
                             <Route path={"/user/edit/:id"} component={UsersEdit}/>
                             <Route path={"/user/create"} component={CeateUser}/>
                             <Route path={"/users"} component={mainUersList}/>
-
                         </Switch>
                     </div>
                 </div>
@@ -42,4 +48,4 @@ function Routes(props) {
         </div>
     )
 }
-export default Routes;
+export default withRouter(Routes);
