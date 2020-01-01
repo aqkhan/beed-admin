@@ -15,7 +15,7 @@ function Login(props) {
         if(loggedIn){
             history.push('/');
         }
-    });
+    }, []);
 
     const login = (event) => {
         event.preventDefault();
@@ -39,7 +39,14 @@ function Login(props) {
                     type: "SET_ROLE",
                     payload: 'superAdmin'
                 });
-                window.location.href = "/";
+                let redirect = cookie.load('redirect');
+                if(!redirect){
+                    window.location.href = "/";
+                }else {
+                    cookie.remove('redirect');
+                    window.location.href = redirect;
+                }
+
             }else {
                 setError("Invalid username or password");
                 setLoading(false);

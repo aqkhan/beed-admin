@@ -8,7 +8,7 @@ import Dashboard from "./dashboard";
 import Users from "./products/userContainer";
 import UsersEdit from "./products/productEditForm/userEditContainer";
 import NewUser from "./products/productCreateForm/newUser/container";
-import mainUersList from "../components/usersMain";
+import mainUersList from "../components/usersMain/container";
 import CeateUser from "../components/usersMain/userCreateForm";
 import { withRouter } from "react-router-dom";
 

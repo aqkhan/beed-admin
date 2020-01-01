@@ -7,6 +7,7 @@ import {getFarm} from "../../../graphql/queries";
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import UserList from "../../products/productList";
 import gql from "graphql-tag";
+import { redirectToLogin } from "../../functions";
 
 const PageForm = (props) => {
 
@@ -17,7 +18,8 @@ const PageForm = (props) => {
     const [loaded, setLoaded] = useState(false);
     const [button, setButton] = useState("Update");
     const [updateFarmData] = useMutation(gql(updateFarm));
-    const {data} = useQuery(gql(getFarm), {
+    const {dispatch, history} = props;
+    const {data, error} = useQuery(gql(getFarm), {
         variables: {
             id: Id
         },
@@ -31,8 +33,10 @@ const PageForm = (props) => {
             setEmail(data.getFarm.email);
             setLoaded(true);
         }
-    }, [data]);
-
+        if(error){
+            redirectToLogin(history, dispatch);
+        }
+    }, [data, error]);
     const onUpdate = (event) => {
         event.preventDefault();
         setButton("Updating...");

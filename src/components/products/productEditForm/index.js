@@ -8,6 +8,7 @@ import {useMutation, useQuery} from '@apollo/react-hooks';
 import CKEditor from "react-ckeditor-component";
 import RightArea from "../../commoncomponents/imageselector";
 import gql from "graphql-tag";
+import { redirectToLogin } from "../../functions";
 
 const PageForm = (props) => {
     let Id = props.match.params.id;
@@ -20,7 +21,8 @@ const PageForm = (props) => {
     const [loaded, setLoaded] = useState(false);
     const [button, setButton] = useState("Update");
     const [updateFarmData] = useMutation(gql(updateProduct));
-    const {data} = useQuery(gql(getProduct), {
+    const {dispatch, history} = props;
+    const {data, error} = useQuery(gql(getProduct), {
         variables: {
             id: Id
         },
@@ -35,7 +37,10 @@ const PageForm = (props) => {
             setThumbNail(data.getProduct.thumbnail);
             setLoaded(true);
         }
-    }, [data]);
+        if(error){
+            redirectToLogin(history, dispatch);
+        }
+    }, [data, error]);
 
     const onUpdate = (event) => {
         event.preventDefault();

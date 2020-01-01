@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import PageList from "./farmList";
 
-function Pages(){
+function Pages({ dispatch }){
     return (
         <div>
             <div className="rightSection">
@@ -15,7 +15,7 @@ function Pages(){
                     </div>
                 </div>
             </div>
-            <PageList />
+            <PageList dispatch={dispatch} />
         </div>
     )
 }

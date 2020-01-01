@@ -1,20 +1,20 @@
 import React, {useState, useEffect} from "react";
-import {Link} from "react-router-dom";
 import Loader from "../../commoncomponents/loader";
 import axios from "axios";
 import {userPath} from "../../../config";
 import cookie from "react-cookies";
 import {Modal, Button, Form} from "react-bootstrap";
+import {withRouter} from "react-router-dom";
+import { redirectToLogin } from "../../functions";
 
-
-const PagesList = () => {
+const PagesList = (props ) => {
     const [clinicList, setClinicList] = useState(null);
     const [updatedUser, setupdateduser] = useState(null);
     const [newpassword, setNewpassword] = useState(null);
     const [conformpass, setConfirm] = useState(null);
     const [show, setShow] = useState(false);
     const [passerr, setpasserr] = useState("");
-
+    const {dispatch, history} = props;
 
     useEffect(() => {
         let token = cookie.load('token');
@@ -27,6 +27,10 @@ const PagesList = () => {
         };
         axios.get(userPath + "/users/list", header).then(res => {
             setClinicList(res.data.data);
+        }).catch(err => {
+            if(err.response.status === 401){
+                redirectToLogin(history, dispatch);
+            }
         })
     }, []);
 
@@ -190,4 +194,4 @@ const PagesList = () => {
 
 }
 
-export default PagesList;
+export default withRouter(PagesList);

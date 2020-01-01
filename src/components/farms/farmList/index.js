@@ -4,9 +4,11 @@ import Loader from "../../commoncomponents/loader";
 import {useMutation, useQuery} from '@apollo/react-hooks';
 import {listFarms} from "../../../graphql/queries";
 import {deleteFarm} from "../../../graphql/mutations";
+import { redirectToLogin } from "../../functions";
 import gql from "graphql-tag";
+import { withRouter } from "react-router-dom";
 
-const PagesList = () => {
+const PagesList = ({ history, dispatch }) => {
     const [clinicList, setClinicList] = useState(null);
     const {data, error} = useQuery(gql(listFarms), {
         variables: {
@@ -17,8 +19,8 @@ const PagesList = () => {
     const [deleteSingleFarm] = useMutation(gql(deleteFarm));
     useEffect(() => {
         if(error){
-            console.log('error', error);
             setClinicList([]);
+            redirectToLogin(history, dispatch);
         }
         if(data && data.listFarms.items){
             setClinicList(data.listFarms.items);
@@ -92,4 +94,4 @@ const PagesList = () => {
 
 }
 
-export default PagesList;
+export default withRouter(PagesList);
