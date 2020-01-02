@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import Loader from "../commoncomponents/loader"
 import {CSVLink} from "react-csv";
 import {listOrders} from "../../graphql/queries";
 import {useQuery} from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+
 const Allorders = () => {
 
     const {data, error} = useQuery(gql(listOrders), {
@@ -23,7 +24,7 @@ const Allorders = () => {
         printData.push(newSingle);
     })
 
-    return (
+    return  (
         <div>
             <div className="rightSection">
                 <div className="Header page-header">
@@ -61,7 +62,7 @@ const Allorders = () => {
 
                         <tbody>
                         {
-                            printData && printData.length > 0 && printData.map((sin, i) => {
+                            data ?  printData.length > 0 && printData.map((sin, i) => {
                                 return (
                                     <tr className="tableData" key={i}>
                                         <td>{sin.OrderId}</td>
@@ -70,7 +71,11 @@ const Allorders = () => {
                                         <td className="action-icons">{"$" +  parseFloat(Math.round(sin.OrderTotal * 100) / 100).toFixed(2) }</td>
                                     </tr>
                                 )
-                            })
+                            }): <tr>
+                            <td colSpan="3">
+                            <Loader/>
+                            </td>
+                            </tr>
                         }
 
 
