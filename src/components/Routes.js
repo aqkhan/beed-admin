@@ -11,6 +11,7 @@ import NewUser from "./products/productCreateForm/newUser/container";
 import mainUersList from "../components/usersMain/container";
 import CeateUser from "../components/usersMain/userCreateForm";
 import { withRouter } from "react-router-dom";
+import Allorders from "../components/allOrders"
 
 function Routes(props) {
     let {pathname, loggedIn} = props;
@@ -40,6 +41,7 @@ function Routes(props) {
                             <Route path={"/user/edit/:id"} component={UsersEdit}/>
                             <Route path={"/user/create"} component={CeateUser}/>
                             <Route path={"/users"} component={mainUersList}/>
+                            <Route path={"/all-orders"} component={Allorders}/>
                         </Switch>
                     </div>
                 </div>

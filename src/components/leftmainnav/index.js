@@ -42,6 +42,11 @@ function LeftMainNav(props) {
                             <span className="icon-pages1 span2" />Users
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/all-orders" className={setCurrent("orders")}><span className="icon-pages" />
+                            <span className="icon-pages1 span2" />Orders
+                        </Link>
+                    </li>
                     <li onClick={() => logOut()}>
                         <p className={setCurrent("logout")}>
                             <span className="icon-C_events_ico" />
